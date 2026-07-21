@@ -358,6 +358,45 @@ opacity:1;
 animation:fadeIn .8s;
 
 }
+.envelope{
+
+font-size:100px;
+cursor:pointer;
+transition:.4s;
+
+}
+
+.envelope:hover{
+
+transform:scale(1.1);
+
+}
+
+.letter{
+
+display:none;
+
+margin-top:30px;
+
+background:rgba(255,255,255,.15);
+
+padding:30px;
+
+border-radius:20px;
+
+max-width:700px;
+
+backdrop-filter:blur(10px);
+
+}
+
+.letter.show{
+
+display:block;
+
+animation:fadeIn .8s;
+
+}
 </style>
 
 </head>
@@ -384,7 +423,31 @@ animation:fadeIn .8s;
 </section>
 
 <!-- PAGE 2 -->
+<!-- PAGE 3 -->
 
+<section class="page" id="page3">
+
+<h1>💌 Letter</h1>
+
+<div class="envelope" id="envelope">
+
+💌
+
+</div>
+
+<div class="letter" id="letter">
+
+<p id="letterText"></p>
+
+<button id="closeLetter">
+
+Close Letter ❤️
+
+</button>
+
+</div>
+
+</section>
 <section class="page" id="page2">
 
 <h1>❤️ 14 May 2026 ❤️</h1>
@@ -586,6 +649,61 @@ showPage("page2");
 document.getElementById("next2").onclick=function(){
 
 alert("Page 3 agle part me banega ❤️");
+
+};
+document.getElementById("next2").onclick=function(){
+
+showPage("page3");
+
+};
+
+const letterMessage=`Dear Noor ❤️
+
+Pata hai...
+
+Kabhi kabhi main sochta hu...
+
+Ki meri life me tumhara aana kitna unexpected tha.
+
+Aur shayad wahi is story ki sabse khoobsurat baat hai.
+
+Tumhare aane ke baad...
+
+Choti choti cheezein bhi special lagne lagi.
+
+I Love You Noor ❤️
+
+Forever Yours,
+
+Jagat ❤️`;
+
+document.getElementById("envelope").onclick=function(){
+
+document.getElementById("letter").classList.add("show");
+
+let i=0;
+
+document.getElementById("letterText").innerHTML="";
+
+const timer=setInterval(()=>{
+
+document.getElementById("letterText").innerHTML+=letterMessage.charAt(i);
+
+i++;
+
+if(i>=letterMessage.length){
+
+clearInterval(timer);
+
+}
+
+},35);
+
+};
+
+document.getElementById("closeLetter").onclick=function(){
+
+alert("Page 4 agle part me ❤️");
 
 };
 </script>
