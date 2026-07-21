@@ -325,6 +325,39 @@ transform:scale(1.3);
 }
 
 }
+.page{
+
+position:absolute;
+
+inset:0;
+
+display:none;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+padding:50px;
+
+text-align:center;
+
+opacity:0;
+
+transition:.7s;
+
+}
+
+.page.active{
+
+display:flex;
+
+opacity:1;
+
+animation:fadeIn .8s;
+
+}
 </style>
 
 </head>
@@ -334,19 +367,81 @@ transform:scale(1.3);
 <div class="glow glow2"></div>
 <div class="book">
 
-<div class="page fade">
+<!-- PAGE 1 -->
+
+<section class="page fade active" id="page1">
 
 <h1 class="typing" id="typing"></h1>
 
 <p id="introText"></p>
 
-<button id="startBtn">
+<button id="next1">
 
 ✨ Start Our Story ✨
 
 </button>
 
-</div>
+</section>
+
+<!-- PAGE 2 -->
+
+<section class="page" id="page2">
+
+<h1>❤️ 14 May 2026 ❤️</h1>
+
+<p>
+
+Kuch dates sirf calendar me nahi hoti...
+
+<br><br>
+
+Dil me hamesha ke liye bas jaati hain.
+
+<br><br>
+
+14 May 2026...
+
+<br><br>
+
+Hamari life ki wahi date hai.
+
+<br><br>
+
+Us din se...
+
+<br><br>
+
+"Main"
+
+<br><br>
+
+Aur
+
+<br><br>
+
+"Tum"
+
+<br><br>
+
+Dheere Dheere...
+
+<br><br>
+
+"HUM"
+
+<br><br>
+
+Ban gaye. ❤️
+
+</p>
+
+<button id="next2">
+
+Continue ❤️
+
+</button>
+
+</section>
 <script>
 const introLines=[
 
@@ -470,6 +565,29 @@ star.style.animationDelay=Math.random()*3+"s";
 document.body.appendChild(star);
 
 }
+function showPage(id){
+
+document.querySelectorAll(".page").forEach(page=>{
+
+page.classList.remove("active");
+
+});
+
+document.getElementById(id).classList.add("active");
+
+}
+
+document.getElementById("next1").onclick=function(){
+
+showPage("page2");
+
+};
+
+document.getElementById("next2").onclick=function(){
+
+alert("Page 3 agle part me banega ❤️");
+
+};
 </script>
 </body>
 </html>
