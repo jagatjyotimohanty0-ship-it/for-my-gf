@@ -201,7 +201,69 @@ width:100%;
 }
 
 }
+/* Floating Hearts */
 
+.heart{
+position:absolute;
+bottom:-60px;
+font-size:22px;
+opacity:.8;
+animation:floatHeart linear infinite;
+pointer-events:none;
+}
+
+@keyframes floatHeart{
+
+0%{
+transform:translateY(0) scale(.7);
+opacity:0;
+}
+
+15%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) rotate(360deg) scale(1.4);
+opacity:0;
+}
+
+/* Typing Cursor */
+
+}
+
+.typing::after{
+content:"|";
+animation:blink .7s infinite;
+}
+
+@keyframes blink{
+
+50%{
+opacity:0;
+}
+
+}
+
+/* Fade Animation */
+
+.fade{
+animation:fadeIn 1.2s;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(25px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
 </style>
 
 </head>
@@ -210,27 +272,101 @@ width:100%;
 
 <div class="book">
 
-<div class="page">
+<div class="page fade">
 
-<h1>Loading Our Story ❤️</h1>
+<h1 class="typing" id="typing"></h1>
 
 <p>
 
-Please wait...
+Agar tum yaha tak aa gayi ho... ❤️
 
-Our beautiful memories are getting ready...
+<br><br>
+
+To shayad tum samajh hi gayi hogi...
+
+<br><br>
+
+Ye koi normal website nahi hai...
+
+<br><br>
+
+Ye meri feelings hain...
+
+<br><br>
+
+Jo words me bolna mushkil tha...
+
+<br><br>
+
+Isliye maine unhe is website me likh diya. ❤️
+
+<br><br>
+
+Ready ho?
+
+<br><br>
+
+Chalo...
+
+Hamari story dobara jeete hain.
 
 </p>
 
-<button>
+<button id="startBtn">
 
-Loading...
+✨ Start Our Story ✨
 
 </button>
 
 </div>
+<script>
 
-</div>
+const text="Hey Noor... ❤️";
 
+let i=0;
+
+function type(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(type,100);
+
+}
+
+}
+
+type();
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML=Math.random()>0.5?"❤️":"💖";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(5+Math.random()*6)+"s";
+
+heart.style.fontSize=(18+Math.random()*18)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},11000);
+
+}
+
+setInterval(createHeart,350);
+
+</script>
 </body>
 </html>
